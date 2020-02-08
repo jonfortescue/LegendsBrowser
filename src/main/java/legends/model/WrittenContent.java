@@ -26,6 +26,8 @@ public class WrittenContent extends AbstractObject {
 	private List<String> styles = new ArrayList<>();
 	@Xml("author,author_hfid")
 	private int authorHfId = -1;
+	@Xml("author_roll")
+	private int authorRoll = -1;
 	@Xml("form_id")
 	private int formId = -1;
 
@@ -72,6 +74,14 @@ public class WrittenContent extends AbstractObject {
 	public void setAuthorHfId(int authorHfId) {
 		this.authorHfId = authorHfId;
 	}
+	
+	public int getAuthorRoll() {
+		return authorRoll;
+	}
+	
+	public void setAuthorRoll(int authorRoll) {
+		this.authorRoll = authorRoll;
+	}
 
 	public int getFormId() {
 		return formId;
@@ -112,6 +122,46 @@ public class WrittenContent extends AbstractObject {
 	public String getAuthoredOn() {
 		return events.stream().collect(Filters.filterEvent(WrittenContentComposedEvent.class)).map(Event::getDate)
 				.findFirst().orElse("");
+	}
+	
+	public String getQualityDescription() {
+		if (type == null || authorRoll < 0)
+			return "";
+		
+		switch (type) {
+		case "autobiography":
+		case "biography":
+		case "comparative biography":
+		case "cultural comparison":
+		case "cultural history":
+		case "essay":
+		case "guide":
+		case "manual":
+		case "novel":
+		case "play":
+		case "short story":
+			if (authorRoll < 10)
+				return "Overall, the prose is amateurish at best.";
+			else if (authorRoll < 20)
+				return "Overall, the prose is not awful, but not very good either.";
+			else if (authorRoll < 30)
+				return "Overall, the prose is passable.";
+			else
+				return "Overall, the prose is great.";
+		case "chronicle":
+		case "dictionary":
+		case "star chart":
+			if (authorRoll < 10)
+				return "Overall, this is a terrible compilation of information.";
+			else if (authorRoll < 20)
+				return "Overall, the information is not compiled very well.";
+			else if (authorRoll < 30)
+				return "Overall, this is a good source of information.";
+			else
+				return "Overall, this is a great source of information.";
+		default:
+			return "";
+		}
 	}
 
 }

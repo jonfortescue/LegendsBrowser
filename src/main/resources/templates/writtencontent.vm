@@ -11,6 +11,9 @@
 	#end
 #end
 </p>
+#if($wc.authorRoll != -1)
+<p>$wc.getQualityDescription() (Author rolled $wc.authorRoll.)</p>
+#end
 
 #if($wc.formId != -1)
 	an example of 
