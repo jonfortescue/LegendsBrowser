@@ -128,28 +128,80 @@ public class WrittenContent extends AbstractObject {
 		if (type == null || authorRoll < 0)
 			return "";
 		
-		switch (type) {
+		switch (getType()) {
+		case "poem":
+			if (authorRoll < 10)
+				return "Overall, the poetry is very, very bad.";
+			else if (authorRoll < 20)
+				return "Overall, the poetry is not awful, but not very good either.";
+			else if (authorRoll < 30)
+				return "Overall, the poetry is passable.";
+			else if (authorRoll < 40)
+				return "Overall, the poetry is great.";
+			else if (authorRoll < 50)
+				return "Overall, the poetry is inspired.";
+			else
+				return "Overall, the poetry is masterful.";
+		case "musical composition":
+			if (authorRoll < 10)
+				return "Overall, the composition is atrocious.";
+			else if (authorRoll < 20)
+				return "Overall, the composition is not awful, but not very good either.";
+			else if (authorRoll < 30)
+				return "Overall, the composition is passable.";
+			else if (authorRoll < 40)
+				return "Overall, the composition is great.";
+			else if (authorRoll < 50)
+				return "Overall, the composition is inspired.";
+			else
+				return "Overall, the composition is masterful.";
+		case "choreography":
+			if (authorRoll < 10)
+				return "Overall, the choreography is just terrible.";
+			else if (authorRoll < 20)
+				return "Overall, the choreography is not awful, but not very good either.";
+			else if (authorRoll < 30)
+				return "Overall, the choreography is passable.";
+			else if (authorRoll < 40)
+				return "Overall, the choreography is great.";
+			else if (authorRoll < 50)
+				return "Overall, the choreography is inspired.";
+			else
+				return "Overall, the choreography is masterful.";
+		case "alternate history":
 		case "autobiography":
 		case "biography":
 		case "comparative biography":
 		case "cultural comparison":
 		case "cultural history":
+		case "dialog":
 		case "essay":
 		case "guide":
+		case "letter":
 		case "manual":
 		case "novel":
 		case "play":
 		case "short story":
+		case "treatise on technological evolution":
 			if (authorRoll < 10)
 				return "Overall, the prose is amateurish at best.";
 			else if (authorRoll < 20)
 				return "Overall, the prose is not awful, but not very good either.";
 			else if (authorRoll < 30)
 				return "Overall, the prose is passable.";
-			else
+			else if (authorRoll < 40)
 				return "Overall, the prose is great.";
+			else if (authorRoll < 50)
+				return "Overall, the prose is splendid.";
+			else
+				return "Overall, the prose is masterful.";
+		case "atlas":
+		case "biographic dictionary":
 		case "chronicle":
 		case "dictionary":
+		case "encyclopedia":
+		case "genealogy":
+		case "star catalogue":
 		case "star chart":
 			if (authorRoll < 10)
 				return "Overall, this is a terrible compilation of information.";
@@ -157,8 +209,13 @@ public class WrittenContent extends AbstractObject {
 				return "Overall, the information is not compiled very well.";
 			else if (authorRoll < 30)
 				return "Overall, this is a good source of information.";
-			else
+			else if (authorRoll < 40)
 				return "Overall, this is a great source of information.";
+			else if (authorRoll < 50)
+				return "Overall, this is a splendid source of information.";
+			else
+				return "Overall, the information is compiled masterfully.";
+			
 		default:
 			return "";
 		}

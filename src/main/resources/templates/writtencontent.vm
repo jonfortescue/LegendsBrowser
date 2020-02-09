@@ -47,9 +47,9 @@
 		#set($wc = $World.getWrittenContent($reference.id))
 		the $wc.type $wc.link 
 	#elseif($reference.type.equals("VALUE_LEVEL")) 
-		$reference.text
+		$reference.text (value)
 	#elseif($reference.type.equals("KNOWLEDGE_SCHOLAR_FLAG")) 
-		$reference.text
+		$reference.text (knowledge)
 	#else
 		$reference.type $reference.id
 	#end

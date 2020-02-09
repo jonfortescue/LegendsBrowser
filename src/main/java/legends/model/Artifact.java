@@ -1,6 +1,7 @@
 package legends.model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import legends.Application;
@@ -94,7 +95,7 @@ public class Artifact extends AbstractObject {
 	}
 
 	public List<Integer> getWrittenContent() {
-		return writtenContent;
+		return new ArrayList<>(new HashSet<>(writtenContent));
 	}
 
 	@Override
